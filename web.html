@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Mirror</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: background 1s ease;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .moods {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .mood-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .mood-btn:hover {
+      transform: scale(1.2);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>🪞 Mood Mirror</h1>
+  <p>Select a color that reflects your mood today:</p>
+
+  <div class="moods">
+    <button class="mood-btn" style="background:#FFD700;" onclick="reflectMood('happy')"></button>
+    <button class="mood-btn" style="background:#87CEEB;" onclick="reflectMood('calm')"></button>
+    <button class="mood-btn" style="background:#6495ED;" onclick="reflectMood('sad')"></button>
+    <button class="mood-btn" style="background:#FF6347;" onclick="reflectMood('angry')"></button>
+    <button class="mood-btn" style="background:#98FB98;" onclick="reflectMood('hopeful')"></button>
+  </div>
+
+  <p id="message"></p>
+
+  <footer>✨ Reflect your day in color ✨</footer>
+
+  <script>
+    const moods = {
+      happy: {
+        message: "😊 Keep smiling, happiness is contagious!",
+        background: "#FFFACD"
+      },
+      calm: {
+        message: "🌊 Breathe deep. Let peace guide your day.",
+        background: "#E0FFFF"
+      },
+      sad: {
+        message: "🌧 It's okay to feel down. Brighter days are ahead.",
+        background: "#DDEEFF"
+      },
+      angry: {
+        message: "🔥 Take a moment. You are in control.",
+        background: "#FFDDDD"
+      },
+      hopeful: {
+        message: "🌱 Hope is a powerful thing. Keep growing.",
+        background: "#F0FFF0"
+      }
+    };
+
+    function reflectMood(mood) {
+      const moodData = moods[mood];
+      document.getElementById("message").textContent = moodData.message;
+      document.body.style.background = moodData.background;
+    }
+  </script>
+</body>
+</html>
